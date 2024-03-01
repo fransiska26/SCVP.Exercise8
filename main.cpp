@@ -60,12 +60,12 @@ public:
     routingExtension(int i, int o) : inputPortNumber(i),
                                      outputPortNumber(o)
     {
-        cout << "\033[1;36m(E"
-             << ") @"  << setfill(' ') << setw(12) << sc_time_stamp()
-             << ": Extension Created = "
-             << "  inPort = " << dec << setfill(' ') << setw(2) << i
-             << " outPort = " << dec << setfill(' ') << setw(2) << o
-             << "\033[0m" << endl;
+        // cout << "\033[1;36m(E"
+        //      << ") @"  << setfill(' ') << setw(12) << sc_time_stamp()
+        //      << ": Extension Created = "
+        //      << "  inPort = " << dec << setfill(' ') << setw(2) << i
+        //      << " outPort = " << dec << setfill(' ') << setw(2) << o
+        //      << "\033[0m" << endl;
     }
 
     tlm_extension_base *clone() const
@@ -181,15 +181,15 @@ private:
             SC_REPORT_FATAL(name(),"Illegal phase received by initiator");
         }
 
-        cout << "\033[1;37m("
-             << name()
-             << ")@"  << setfill(' ') << setw(12) << sc_time_stamp()
-             << ": Addr = " << setfill('0') << setw(8)
-             << dec << trans.get_address()
-             << "  inPort = " << dec << setfill(' ') << setw(2) << id
-             << " outPort = " << dec << setfill(' ') << setw(2) << outPort
-             << " ptr = " << &trans
-             << "\033[0m" << endl;
+        // cout << "\033[1;37m("
+        //      << name()
+        //      << ")@"  << setfill(' ') << setw(12) << sc_time_stamp()
+        //      << ": Addr = " << setfill('0') << setw(8)
+        //      << dec << trans.get_address()
+        //      << "  inPort = " << dec << setfill(' ') << setw(2) << id
+        //      << " outPort = " << dec << setfill(' ') << setw(2) << outPort
+        //      << " ptr = " << &trans
+        //      << "\033[0m" << endl;
 
 
         return iSocket[outPort]->nb_transport_fw(trans, phase, delay);
@@ -213,8 +213,8 @@ int sc_main (int, char **)
 {
     Initiator *cpu1   = new Initiator("C1");
 
-    Target *memory1   = new Target("M1", 8);
-    Target *memory2   = new Target("M2", 8);
+    Target *memory1   = new Target("M1", 4);
+    Target *memory2   = new Target("M2", 4);
 
     Interconnect *bus = new Interconnect("B1");
 
